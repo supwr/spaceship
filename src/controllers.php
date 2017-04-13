@@ -10,7 +10,7 @@ Request::setTrustedProxies(array('127.0.0.1'));
 
 // Controllers
 $app->mount('/', new Controllers\HomeController());
-
+$app->mount('/chat', new Controllers\ChatController());
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

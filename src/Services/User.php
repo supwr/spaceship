@@ -28,8 +28,20 @@ class User
       return $user;
   }
 
-  public function addUser()
+  public function addUser(array $user)
   {
+    $field = "";
+    $value = "";
+
+    extract($user);
+
+    $q = $this->pdo->prepare("insert into user(nome, lastname) values (:name, :lastname)");
+    $q->execute(
+      array(
+        "name" => $name,
+        "lastname" => $lastname
+      )
+    );
 
   }
 

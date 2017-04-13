@@ -9,24 +9,24 @@ use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use PDO;
 
-class HomeController implements ControllerProviderInterface
+class ChatController implements ControllerProviderInterface
 {
     public function connect(Application $app)
     {
 
         $factory = $app["controllers_factory"];
-        $factory->get("/", "Controllers\HomeController::index");
+        $factory->get("/", "Controllers\ChatController::index");
 
         return $factory;
     }
 
     public function index(Application $app)
     {
-        $users = $app["user.service"]->getUser(1);
-        return $app->json($users, 200);
+
+      return new Response($app['twig']->render('chat/index.html.twig'));
 
     }
-    
+
 }
 
 
