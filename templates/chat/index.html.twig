@@ -3,17 +3,32 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 <body>
+
+  <textarea id="messages" style="height: 200px;width:90px;"></textarea>
+  <input type="text" id="m" value=""/>
+  <a href="javascript:void(0)" class="send">Send</a>
+
   <script>
     var conn = new WebSocket('ws://localhost:8888');
+
     conn.onopen = function(e) {
       console.log("Connection established!");
     };
 
     conn.onmessage = function(e) {
-      console.log(e.data);
+      //console.log(e.data);
+      $("#messages").val($("#messages").val()+"<br>"+e.data.toString())
     };
+
+    //conn.send("sdhkja");
+
+    $(document).on("click", ".send", function(){
+        conn.send($("#m").val());
+    });
+
   </script>
 </body>
 </html>

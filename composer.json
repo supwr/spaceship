@@ -22,7 +22,9 @@
         "symfony/translation": "~2.8|3.0.*",
         "symfony/twig-bridge": "~3.2",
         "symfony/validator": "~2.8|3.0.*",
-        "cboden/ratchet": "^0.3.6"
+        "cboden/ratchet": "^0.3.6",
+        "mongodb/mongodb": "^1.1",
+        "lcobucci/jwt": "^3.2"
     },
     "autoload": {
         "psr-0": { "": "src/" },

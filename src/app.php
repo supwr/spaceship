@@ -22,13 +22,11 @@ $app->register(new Silex\Provider\AssetServiceProvider(), array(
     ),
 ));
 
-// $app["pdo.mongo.connection"] = function(){
-//   return new PDO("doctrine-orm-service-provider")
-// };
+ $app["pdo.mongo.connection"] = function(){
+     return new MongoDB\Client("mongodb://localhost:27017");
+ };
 
-// $app["pdo.mysql.server"] = getenv()
-//
-$app["pdo.mysql.connection"] = function(){
+ $app["pdo.mysql.connection"] = function(){
   return new PDO('mysql:host='.getenv("MYSQL_SERVER").';dbname='.getenv("MYSQL_DB"), getenv("MYSQL_USER"), getenv("MYSQL_PWD"));
 };
 
